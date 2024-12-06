@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ark Community Kids Club</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      /* General Styles */
+      body {
+          font-family: 'Poppins', Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background: linear-gradient(45deg, #f0f8ff, #e6f7ff);
+          animation: backgroundMove 12s infinite alternate;
+          overflow-x: hidden;
+      }
+  
+      @keyframes backgroundMove {
+          0% {
+              background-position: 0 0;
+          }
+          100% {
+              background-position: 100% 100%;
+          }
+      }
+  
+      /* Navbar */
+      .navbar {
+          margin-bottom: 0;
+          border-radius: 0;
+          background: rgba(0, 123, 255, 0.85);
+          border: none;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+          transition: background 0.3s;
+      }
+  
+      .navbar:hover {
+          background: rgba(0, 123, 255, 1);
+      }
+  
+      .navbar-brand {
+          font-size: 28px;
+          font-weight: bold;
+          color: #fff !important;
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+  
+      .navbar-nav > li > a {
+          color: #fff !important;
+          transition: color 0.3s;
+      }
+  
+      .navbar-nav > li > a:hover {
+          color: #f0f8ff !important;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 5px;
+      }
+  
+      /* Header */
+      .header {
+          background: linear-gradient(90deg, #007bff, #0056b3);
+          color: white;
+          padding: 100px 20px;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+      }
+  
+      .header h1 {
+          font-size: 60px;
+          font-weight: bold;
+          animation: slideIn 1.5s ease-in-out;
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+  
+      .header p {
+          font-size: 22px;
+          margin-top: 10px;
+          animation: fadeIn 2s ease-in-out;
+      }
+  
+      @keyframes slideIn {
+          from {
+              transform: translateX(-100%);
+          }
+          to {
+              transform: translateX(0);
+          }
+      }
+  
+      /* Sections */
+      .section {
+          padding: 80px 20px;
+          position: relative;
+      }
+  
+      .section-title {
+          text-align: center;
+          font-size: 36px;
+          color: #333;
+          font-weight: bold;
+          margin-bottom: 40px;
+          position: relative;
+      }
+  
+      .section-title:after {
+          content: "";
+          display: block;
+          width: 60px;
+          height: 5px;
+          background: #007bff;
+          margin: 10px auto;
+          border-radius: 3px;
+          animation: fadeIn 2s;
+      }
+  
+      .about-text,
+      .event-text {
+          background: #fff;
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+          border-radius: 12px;
+          padding: 30px;
+          text-align: justify;
+          transition: transform 0.4s, box-shadow 0.4s;
+      }
+  
+      .about-text:hover,
+      .event-text:hover {
+          transform: translateY(-10px) scale(1.03);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+  
+      /* Location Map */
+      iframe {
+          border: none;
+          border-radius: 10px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+  
+      /* Buttons */
+      .btn-primary {
+          background: linear-gradient(45deg, #007bff, #0056b3);
+          color: white;
+          border: none;
+          border-radius: 30px;
+          padding: 12px 25px;
+          font-size: 16px;
+          transition: all 0.3s ease-in-out;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      }
+  
+      .btn-primary:hover {
+          background: linear-gradient(45deg, #0056b3, #003d80);
+          transform: scale(1.1);
+          box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+      }
+  
+      /* Contact Section */
+      .contact-section {
+          background-color: #f7f7f7;
+          padding: 80px 20px;
+      }
+  
+      .contact-section a {
+          color: #007bff;
+          font-weight: bold;
+          transition: color 0.3s;
+      }
+  
+      .contact-section a:hover {
+          color: #0056b3;
+          text-decoration: underline;
+      }
+  
+      /* Footer */
+      footer {
+          background: #333;
+          color: #fff;
+          text-align: center;
+          padding: 25px 0;
+          font-size: 14px;
+      }
+  
+      footer a {
+          color: #f0f8ff;
+          text-decoration: none;
+      }
+  
+      footer a:hover {
+          text-decoration: underline;
+      }
+  
+      /* Responsive Design */
+      @media (max-width: 768px) {
+          .header h1 {
+              font-size: 36px;
+          }
+  
+          .header p {
+              font-size: 18px;
+          }
+  
+          .section-title {
+              font-size: 28px;
+          }
+  
+          .btn-primary {
+              padding: 10px 20px;
+              font-size: 14px;
+          }
+      }
+  </style>
+  
+</head>
+<body>
+   <!-- Navbar -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMenu">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <!-- Logo in Navbar -->
+          <a class="navbar-brand" href="#">
+              <img src="JS.png" alt="The Ark Logo" style="height: 40px; display: inline-block; vertical-align: middle;">
+              The Ark Kids Club
+          </a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="#about">About</a></li>
+              <li><a href="#events">Events</a></li>
+              <li><a href="#location">Location</a></li>
+              <li><a href="#contact">Contact</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<div class="header">
+  <!-- Logo in Header -->
+  <img src="the ark.jpg" alt="The Ark Logo" style="max-width: 150px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
+  <h1>Welcome to The Ark Community Kids Club</h1>
+  <p>Llandilo Jordan Springs</p>
+</div>
+
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <p class="about-text animated fadeInUp">
+                The Ark Community Kids Club is a vibrant space for children to explore, play, and learn together. 
+                Located in the scenic area of Jordan Springs, we are a club for children and kids to eat, learn about God, and have fun.
+            </p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section">
+        <div class="container">
+            <h2 class="section-title">Events & Activities</h2>
+            <p class="event-text animated fadeInUp">
+                Join us for exciting events, including arts and crafts, outdoor games, storytelling, and much more! 
+                We organize seasonal celebrations and regular workshops to engage kids and families in the community.
+            </p>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Location</h2>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.016387167318!2d150.74939327536256!3d-33.708524873288376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b1284b8e778cb87%3A0x96de87109845ec79!2sLlandilo%20Community%20Hall!5e0!3m2!1sen!2sau!4v1733463143672!5m2!1sen!2sau"
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p>Email: <a href="mailto:robloxplayerpro830@gmail.com">robloxplayerpro830@gmail.com (Tim's email till Heath gets one)</a></p>
+            <p>Join our Facebook group: <a href="#">@The ARK Community Kid's Club</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 The Ark Community Kids Club | Designed by Tim | Thanks ChatGPT for misc</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</body>
+</html>

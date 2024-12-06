@@ -1,0 +1,158 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 20px;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.page-header {
+  margin-top: 20px;
+}
+
+.navbar-inverse {
+  background-color: #333;
+  border-color: #333;
+}
+
+.navbar-inverse .navbar-brand, 
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-brand:hover, 
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #ddd;
+}
+
+/* Travel Main Div Styles */
+.travel_mainDiv {
+  border: 1px solid lightgrey;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.travel_mainDiv img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.travel_mainDiv h5, .travel_mainDiv p {
+  margin: 20px;
+}
+
+/* Movie Head Styles */
+.movie_head {
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+.movie_head:hover {
+  background-color: #0056b3;
+}
+
+.movie_head i {
+  float: right;
+}
+
+/* Movie Text Styles */
+.movie_text span {
+  color: deepskyblue;
+}
+
+.movie_text img {
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+
+.movie_text {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Toys Section Styles */
+.toys {
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.toys img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.toys a {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.toys a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Section Styles */
+#contact {
+  padding: 20px;
+}
+
+#contact iframe {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact_1 {
+  padding: 10px;
+}
+
+.contact_1 h5 {
+  margin: 10px 0;
+}
+
+.contact_1 a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.contact_1 a:hover {
+  text-decoration: underline;
+}
+
+.contact_1 i {
+  margin-right: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .col-lg-6, .col-md-6, .col-sm-6, .col-xs-6 {
+      width: 100%;
+  }
+
+  .container {
+      padding: 10px;
+  }
+}
