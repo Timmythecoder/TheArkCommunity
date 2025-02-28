@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Event Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 20px auto;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        img {
+            max-width: 100px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Panel for Events</h1>
+
+    <section id="admin-panel">
+        <h2>Add Event</h2>
+        <form id="add-event-form">
+            <label for="event-title">Event Title:</label>
+            <input type="text" id="event-title" required>
+            
+            <label for="event-date">Event Date:</label>
+            <input type="date" id="event-date" required>
+            
+            <label for="event-time">Event Time:</label>
+            <input type="time" id="event-time" required>
+            
+            <label for="event-description">Event Description:</label>
+            <textarea id="event-description" rows="4" required></textarea>
+            
+            <label for="event-image">Image URL:</label>
+            <input type="url" id="event-image" required>
+            
+            <button type="submit">Add Event</button>
+        </form>
+    </section>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="eventTableBody">
+            <tr><td colspan="6">Loading events...</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Modal for Image Enlargement -->
+    <div class="modal" id="photo-modal">
+        <span class="close-modal">&times;</span>
+        <img id="modal-photo" src="" alt="Event Photo">
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDv6WpFw6J4qGj7q0h-8iWtIGPeImQbCBE",
+            authDomain: "the-ark-community-kids-club.firebaseapp.com",
+            projectId: "the-ark-community-kids-club",
+            storageBucket: "the-ark-community-kids-club.appspot.com",
+            messagingSenderId: "26143306799",
+            appId: "1:26143306799:web:fc6aa3a67bac0a78a882da"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Add Event Form Submission
+        document.getElementById("add-event-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById("event-title").value;
+            const date = document.getElementById("event-date").value;
+            const time = document.getElementById("event-time").value;
+            const description = document.getElementById("event-description").value;
+            const image = document.getElementById("event-image").value;
+
+            const eventsRef = ref(db, 'events');
+            push(eventsRef, { title, date, time, description, image })
+                .then(() => {
+                    alert("Event added successfully!");
+                    document.getElementById("add-event-form").reset();
+                })
+                .catch((error) => {
+                    console.error("Error adding event:", error);
+                    alert("Failed to add event. Please try again.");
+                });
+        });
+
+        // Fetch and Display Events
+        const eventTableBody = document.getElementById("eventTableBody");
+        const eventsRef = ref(db, "events");
+
+     // Fetch and Display Events
+onValue(eventsRef, (snapshot) => {
+    eventTableBody.innerHTML = "";
+    const events = snapshot.val();
+
+    if (events) {
+        Object.entries(events).forEach(([id, event]) => {
+            const row = document.createElement("tr");
+
+            // Format date and time
+            const rawDate = new Date(`${event.date} ${event.time}`);
+            const formattedDate = rawDate.toLocaleDateString("en-US", {
+                year: "2-digit",
+                month: "2-digit",
+                day: "2-digit",
+            });
+            const formattedTime = rawDate.toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+            });
+
+            row.innerHTML = `
+                <td>${event.title}</td>
+                <td>${formattedDate}</td>
+                <td>${formattedTime}</td>
+                <td>${event.description}</td>
+                <td><img src="${event.image}" alt="${event.title}" data-id="${id}" style="max-width: 100px; cursor: pointer;"></td>
+                <td>
+                    <button data-id="${id}" class="delete-btn">Delete</button>
+                </td>
+            `;
+
+            eventTableBody.appendChild(row);
+        });
+
+        // Add event listeners for delete buttons
+        document.querySelectorAll(".delete-btn").forEach((button) => {
+            button.addEventListener("click", (e) => {
+                const eventId = e.target.getAttribute("data-id");
+                const eventRef = ref(db, `events/${eventId}`);
+                remove(eventRef)
+                    .then(() => {
+                        alert("Event deleted successfully!");
+                    })
+                    .catch((error) => {
+                        console.error("Error deleting event:", error);
+                        alert("Failed to delete event. Please try again.");
+                    });
+            });
+        });
+
+        // Add click listeners for images to enlarge them
+        document.querySelectorAll("#eventTableBody img").forEach((img) => {
+            img.addEventListener("click", (e) => {
+                const modal = document.getElementById("photo-modal");
+                const modalPhoto = document.getElementById("modal-photo");
+
+                modalPhoto.src = e.target.src;
+                modal.style.display = "flex";
+            });
+        });
+    } else {
+        eventTableBody.innerHTML = "<tr><td colspan='6'>No events available.</td></tr>";
+    }
+});
+
+
+        // Close Modal
+        document.querySelector(".close-modal").addEventListener("click", () => {
+            document.getElementById("photo-modal").style.display = "none";
+        });
+
+    </script>
+</body>
+</html>

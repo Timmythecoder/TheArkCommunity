@@ -1,302 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+
+    <!--
+    Hey! thanks for looking into my code. Took me a bit making this site, 
+    but AI was also incorporated. Make sure to go to kids club!
+    The Ark 28/02/25
+    -->
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Ark Community Kids Club</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-      /* General Styles */
-      body {
-          font-family: 'Poppins', Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-          background: linear-gradient(45deg, #f0f8ff, #e6f7ff);
-          animation: backgroundMove 12s infinite alternate;
-          overflow-x: hidden;
-      }
-  
-      @keyframes backgroundMove {
-          0% {
-              background-position: 0 0;
-          }
-          100% {
-              background-position: 100% 100%;
-          }
-      }
-  
-      /* Navbar */
-      .navbar {
-          margin-bottom: 0;
-          border-radius: 0;
-          background: rgba(0, 123, 255, 0.85);
-          border: none;
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-          transition: background 0.3s;
-      }
-  
-      .navbar:hover {
-          background: rgba(0, 123, 255, 1);
-      }
-  
-      .navbar-brand {
-          font-size: 28px;
-          font-weight: bold;
-          color: #fff !important;
-          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-      }
-  
-      .navbar-nav > li > a {
-          color: #fff !important;
-          transition: color 0.3s;
-      }
-  
-      .navbar-nav > li > a:hover {
-          color: #f0f8ff !important;
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 5px;
-      }
-  
-      /* Header */
-      .header {
-          background: linear-gradient(90deg, #007bff, #0056b3);
-          color: white;
-          padding: 100px 20px;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-      }
-  
-      .header h1 {
-          font-size: 60px;
-          font-weight: bold;
-          animation: slideIn 1.5s ease-in-out;
-          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      }
-  
-      .header p {
-          font-size: 22px;
-          margin-top: 10px;
-          animation: fadeIn 2s ease-in-out;
-      }
-  
-      @keyframes slideIn {
-          from {
-              transform: translateX(-100%);
-          }
-          to {
-              transform: translateX(0);
-          }
-      }
-  
-      /* Sections */
-      .section {
-          padding: 80px 20px;
-          position: relative;
-      }
-  
-      .section-title {
-          text-align: center;
-          font-size: 36px;
-          color: #333;
-          font-weight: bold;
-          margin-bottom: 40px;
-          position: relative;
-      }
-  
-      .section-title:after {
-          content: "";
-          display: block;
-          width: 60px;
-          height: 5px;
-          background: #007bff;
-          margin: 10px auto;
-          border-radius: 3px;
-          animation: fadeIn 2s;
-      }
-  
-      .about-text,
-      .event-text {
-          background: #fff;
-          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-          border-radius: 12px;
-          padding: 30px;
-          text-align: justify;
-          transition: transform 0.4s, box-shadow 0.4s;
-      }
-  
-      .about-text:hover,
-      .event-text:hover {
-          transform: translateY(-10px) scale(1.03);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      }
-  
-      /* Location Map */
-      iframe {
-          border: none;
-          border-radius: 10px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      }
-  
-      /* Buttons */
-      .btn-primary {
-          background: linear-gradient(45deg, #007bff, #0056b3);
-          color: white;
-          border: none;
-          border-radius: 30px;
-          padding: 12px 25px;
-          font-size: 16px;
-          transition: all 0.3s ease-in-out;
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      }
-  
-      .btn-primary:hover {
-          background: linear-gradient(45deg, #0056b3, #003d80);
-          transform: scale(1.1);
-          box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-      }
-  
-      /* Contact Section */
-      .contact-section {
-          background-color: #f7f7f7;
-          padding: 80px 20px;
-      }
-  
-      .contact-section a {
-          color: #007bff;
-          font-weight: bold;
-          transition: color 0.3s;
-      }
-  
-      .contact-section a:hover {
-          color: #0056b3;
-          text-decoration: underline;
-      }
-  
-      /* Footer */
-      footer {
-          background: #333;
-          color: #fff;
-          text-align: center;
-          padding: 25px 0;
-          font-size: 14px;
-      }
-  
-      footer a {
-          color: #f0f8ff;
-          text-decoration: none;
-      }
-  
-      footer a:hover {
-          text-decoration: underline;
-      }
-  
-      /* Responsive Design */
-      @media (max-width: 768px) {
-          .header h1 {
-              font-size: 36px;
-          }
-  
-          .header p {
-              font-size: 18px;
-          }
-  
-          .section-title {
-              font-size: 28px;
-          }
-  
-          .btn-primary {
-              padding: 10px 20px;
-              font-size: 14px;
-          }
-      }
-  </style>
-  
+        /* General Styles */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #f0f8ff, #e6f7ff);
+            animation: backgroundMove 12s infinite alternate;
+            overflow-x: hidden;
+        }
+
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+            background: rgba(0, 123, 255, 0.85);
+            border: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+        }
+
+        .navbar:hover {
+            background: rgba(0, 123, 255, 1);
+        }
+
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff !important;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-nav>li>a {
+            color: #fff !important;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav>li>a:hover {
+            color: #f0f8ff !important;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 60px;
+            font-weight: bold;
+            animation: slideIn 1.5s ease-in-out;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 22px;
+            margin-top: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 5px;
+            background: #007bff;
+            margin: 10px auto;
+            border-radius: 3px;
+            animation: fadeIn 2s;
+        }
+
+        .about-text,
+        .event-text {
+            background: #fff;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: justify;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .about-text:hover,
+        .event-text:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+
+
+        /* Location Map */
+        iframe {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #0056b3, #003d80);
+            transform: scale(1.1);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #f7f7f7;
+            padding: 80px 20px;
+        }
+
+        .contact-section a {
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .contact-section a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #f0f8ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .header p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .btn-primary {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* Modal Styles */
+        .photo-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-modal img {
+            max-width: 90%;
+            max-height: 80%;
+            margin: auto;
+            display: block;
+            border: 5px solid white;
+            border-radius: 10px;
+        }
+
+        .photo-modal .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+
+
+
+
+
+        .events-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .event-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            border: 5px solid #938bfe;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #7ba9ef;
+        }
+
+        .event-photo {
+            max-width: 100px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .event-description {
+            margin: 5px 0;
+            font-size: 20px;
+        }
+
+        .event-time {
+            font-size: 17px;
+        }
+
+
+
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Poppins', Arial, sans-serif;
+            text-align: center;
+        }
+
+        .spinner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: pulse 2s infinite;
+        }
+
+        .loading-logo {
+            max-width: 120px;
+            margin-bottom: 20px;
+            animation: rotateLogo 1.5s linear infinite;
+        }
+
+        @keyframes rotateLogo {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
+
 <body>
-   <!-- Navbar -->
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMenu">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-          </button>
-          <!-- Logo in Navbar -->
-          <a class="navbar-brand" href="#">
-              <img src="JS.png" alt="The Ark Logo" style="height: 40px; display: inline-block; vertical-align: middle;">
-              The Ark Kids Club
-          </a>
-      </div>
-      <div class="collapse navbar-collapse" id="navbarMenu">
-          <ul class="nav navbar-nav navbar-right">
-              <li><a href="#about">About</a></li>
-              <li><a href="#events">Events</a></li>
-              <li><a href="#location">Location</a></li>
-              <li><a href="#contact">Contact</a></li>
-          </ul>
-      </div>
-  </div>
-</nav>
 
-<!-- Header -->
-<div class="header">
-  <!-- Logo in Header -->
-  <img src="the ark.jpg" alt="The Ark Logo" style="max-width: 150px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
-  <h1>Welcome to The Ark Community Kids Club</h1>
-  <p>Llandilo Jordan Springs</p>
-</div>
+    <script type="module" src="script.js"></script>
+
+    <div id="loading-screen">
+        <div class="spinner">
+            <img src="the ark.jpg" alt="The Ark Logo" class="loading-logo">
+            <p>Loading...</p>
+        </div>
+    </div>
 
 
-    <!-- About Section -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMenu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Logo in Navbar -->
+                <a class="navbar-brand" href="#">
+                    <!-- logo not needed      <img src="JS.png" alt="The Ark Logo" style="height: 40px; display: inline-block; vertical-align: middle;"> -->
+                    The Ark Kids Club
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#events">What do we do?</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#custom-events">Special Events</a></li>
+                    <li><a href="#parents">For Parents</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="header">
+        <!-- Logo in Header -->
+        <img src="the ark.jpg" alt="The Ark Logo"
+            style="max-width: 150px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
+        <h1>Welcome to The Ark Community Kids Club</h1>
+        <p>Llandilo, Jordan Springs</p>
+    </div>
+
+
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">About Us</h2>
             <p class="about-text animated fadeInUp">
-                The Ark Community Kids Club is a vibrant space for children to explore, play, and learn together. 
-                Located in the scenic area of Jordan Springs, we are a club for children and kids to eat, learn about God, and have fun.
+                The Ark Community Kids Club is a vibrant space for children to explore, play, and learn together.
+                Located in the scenic area of Jordan Springs, we are a club for children and kids to eat dinner
+                together, learn about God, and have fun!
+                <br>
+                <br>
+                The Ark is our nickname for the Llandilo Community Hall ... where every Friday night we run a Kid's Club
+                for primary school aged children in years 3-7 at schoool.
+                Running from 5PM - 7PM it is late enough to give kids time to get home from school and early enough to
+                not interfere with other activities (such as getting up early the next morning)!
             </p>
         </div>
     </section>
 
-    <!-- Events Section -->
+
     <section id="events" class="section">
         <div class="container">
             <h2 class="section-title">Events & Activities</h2>
             <p class="event-text animated fadeInUp">
-                Join us for exciting events, including arts and crafts, outdoor games, storytelling, and much more! 
+                Join us for exciting events, including arts and crafts, outdoor games, storytelling, and much more!
                 We organize seasonal celebrations and regular workshops to engage kids and families in the community.
+                <br>
+                <br>
+                Every week consists of
+                both indoor and outdoor activities and games, arts and crafts, a short and simple Bible story, as well
+                as a simple dinner about halfway through. Every month also includes an extra special activity or event
+                (e.g., outdoor movie night, make your own pizza, make your own lantern, Flip Out and much more)!
             </p>
         </div>
     </section>
 
-    <!-- Location Section -->
+    <!-- Custom Events Section -->
+    <section id="custom-events" class="section">
+        <div class="container">
+            <h2 class="section-title">Upcoming Special Events</h2>
+            <div id="events-container" class="event-text animated fadeInUp">
+                <p>Loading events...</p>
+            </div>
+        </div>
+
+        <!-- Modal   -->
+        <div id="photo-modal" class="photo-modal">
+            <span class="close-modal">&times;</span>
+            <img id="modal-photo" src="" alt="Enlarged Event Photo">
+        </div>
+    </section>
+
+
+
     <section id="location" class="section">
         <div class="container">
             <h2 class="section-title">Our Location</h2>
-            <iframe 
+            <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.016387167318!2d150.74939327536256!3d-33.708524873288376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b1284b8e778cb87%3A0x96de87109845ec79!2sLlandilo%20Community%20Hall!5e0!3m2!1sen!2sau!4v1733463143672!5m2!1sen!2sau"
                 width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
-    <!-- Contact Section -->
+
+    <section id="parents" class="section">
+        <div class="container">
+            <h2 class="section-title">For Parents</h2>
+            <p class="event-text animated fadeInUp">
+
+                Cost: $5.00 per child or $10.00 for a family of 3 or more children
+
+                Children must be signed in and out
+                by a parent or authorised guardian
+
+                <br>
+                <br>
+                🟥 Every child is created in the image of God ... and is therefore endowed with dignity, value,
+                uniqueness, and particular talents, gifts, and strengths with which to contribute meaningfully to the
+                wider world, local community, and families in which they have been placed.
+                <br>
+                <br>
+                🟥Every child long’s for and seeks security, significance, self-worth – knowing that they matter to
+                others, that they are safe, and that life itself is meaningful and filled with wonder, joy, and hope.
+                They are not a mistake, an inconvenience, or a distraction from things which are more important. Rather,
+                every child is a miracle, reminding us that God remains committed to both the world in general … and to
+                our human good and flourishing in particular.
+                <br>
+                <br>
+                🟥Every child is created with a body, soul, and spirit. Therefore, every child should be encouraged to
+                care for their physical and emotional selves – developing healthy and respectful relationships with
+                others, cultivating emotional resilience, compassion, fair play / justice, a proper self-esteem, seeking
+                after the good of others, and to consider both their purpose and direction in life.
+                <br>
+                <br>
+                🟥Every child has a right to feel valued, safe, respected, heard, and treated as such. Consequently,
+                having been created by God, for God, and in the image and likeness of God, every child matters to Him
+                and is loved in such a way that He (God) threatens terrible things towards any person who would
+                intentionally harm, devalue, and / or exploit such children by means of physical, emotional, spiritual
+                or any other abuse.
+                <br>
+                <br>
+                🟥Children occupy a special place in the heart of God and in the ministry of Jesus Christ. This is seen
+                most clearly in Jesus’ command to “let the little come to me and do not hinder them,” to all persons to
+                “receive the kingdom of God like a child,” and by God’s frequent references to Himself as a
+                compassionate “Father” with a particular concern for children, widows, orphans, the alien / refugee, and
+                the poor, the weak, and the vulnerable.
+            </p>
+
+            <p class="event-text animated fadeInUp">
+                🟩Please note: All of our team members and leaders have completed training in
+                Creating Safe Spaces, have been properly screened, and have a valid Working with Children Number. 🟩
+            </p>
+
+        </div>
+    </section>
+
+
     <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
-            <p>Email: <a href="mailto:robloxplayerpro830@gmail.com">robloxplayerpro830@gmail.com (Tim's email till Heath gets one)</a></p>
-            <p>Join our Facebook group: <a href="#">@The ARK Community Kid's Club</a></p>
+            <p>Email: <a href="mailto:whiley.heath@gmail.com">whiley.heath@gmail.com - Heath (Director)</a></p>
+            <p>Join our Facebook group: <a href="https://m.facebook.com/groups/865802938036381/">@The ARK Community
+                    Kid's Club</a></p>
+            <p>Follow us on Instagram! <a
+                    href="https://www.instagram.com/thearkcommunitykidsclub/">@thearkcommunitykidsclub</a></p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 The Ark Community Kids Club | Designed by Tim | Thanks ChatGPT for misc</p>
+        <p>&copy; 2024 The Ark Community Kids Club | Designed by Tim | Thanks ChatGPT for CSS, and some HTML</p>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>
